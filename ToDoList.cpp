@@ -109,5 +109,21 @@ void ToDoList::doneSchedule() {
 
 void ToDoList::removeSchedule() {
 	read();
-	
+	view();
+	cout << "제거할 일정을 고르세요.(0 입력시 종료)" << endl;
+
+	while (1) {
+		int index;
+		cin >> index;
+		if (!cin)
+			cout << "정수로 입력해주세요." << endl;
+		else if (index > scheduleList.size() - 1)
+			cout << "해당 일정이 존재하지 않습니다." << endl;
+		else if (index == 0) break;
+		else {
+			scheduleList.erase(scheduleList.begin() + index - 1);
+			save();
+		}
+		view();
+	}
 }

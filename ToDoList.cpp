@@ -60,8 +60,10 @@ void ToDoList::view() {
 	
 	string line;
 
+	int order = 1;
 	while (getline(fs, line)) {
-		cout << line << endl;
+		cout << order << ") " << line << endl;
+		order++;
 	}
 
 	fs.close();
@@ -90,11 +92,7 @@ void ToDoList::doneSchedule() {
 
 	int order = 1;
 
-	for (Schedule schedule : scheduleList) {
-		cout << order << ") " << schedule.getName() << endl;
-		order++;
-	}
-
+	view();
 	cout << "완료한 일정을 고르세요." << endl;
 
 	int index;
@@ -107,4 +105,9 @@ void ToDoList::doneSchedule() {
 	}
 
 	save();
+}
+
+void ToDoList::removeSchedule() {
+	read();
+	
 }

@@ -66,3 +66,18 @@ void ToDoList::view() {
 
 	fs.close();
 }
+
+void ToDoList::addSchedule() {
+	int index = scheduleList.size();
+
+	string schedule;
+
+	while (1) {
+		cout << ++index << ": ";
+
+		getline(cin, schedule);
+		if (schedule == "") break;
+	}
+
+	save();
+}

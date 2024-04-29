@@ -15,6 +15,7 @@ public:
 
 	string getName();
 	bool is_done();
+	void done();
 };
 
 #endif _SCHEDULE_

@@ -36,3 +36,7 @@ string Schedule::getName() {
 bool Schedule::is_done() {
 	return _done;
 }
+
+void Schedule::done() {
+	this->_done = 1;
+}

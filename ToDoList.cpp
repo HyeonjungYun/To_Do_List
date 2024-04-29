@@ -68,6 +68,7 @@ void ToDoList::view() {
 }
 
 void ToDoList::addSchedule() {
+	scheduleList.clear();
 	int index = scheduleList.size();
 
 	string task;

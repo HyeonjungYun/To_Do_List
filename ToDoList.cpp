@@ -77,6 +77,7 @@ void ToDoList::addSchedule() {
 
 		getline(cin, schedule);
 		if (schedule == "") break;
+		scheduleList.push_back(schedule);
 	}
 
 	save();

@@ -84,3 +84,27 @@ void ToDoList::addSchedule() {
 
 	save();
 }
+
+void ToDoList::doneSchedule() {
+	read();
+
+	int order = 1;
+
+	for (Schedule schedule : scheduleList) {
+		cout << order << ") " << schedule.getName() << endl;
+		order++;
+	}
+
+	cout << "완료한 일정을 고르세요." << endl;
+
+	int index;
+	cin >> index;
+
+	if (scheduleList.at(index - 1).is_done())
+		cout << "이미 완료된 일정입니다." << endl;
+	else {
+		scheduleList.at(index - 1).done();
+	}
+
+	save();
+}

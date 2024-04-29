@@ -70,14 +70,15 @@ void ToDoList::view() {
 void ToDoList::addSchedule() {
 	int index = scheduleList.size();
 
-	string schedule;
+	string task;
 
 	while (1) {
 		cout << ++index << ": ";
 
-		getline(cin, schedule);
-		if (schedule == "") break;
-		scheduleList.push_back(schedule);
+		getline(cin, task);
+		if (task == "") break;
+		Schedule schedule(task);
+		scheduleList.push_back(task);
 	}
 
 	save();

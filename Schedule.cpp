@@ -2,6 +2,7 @@
 
 Schedule::Schedule() {
 	this->_name = "";
+	this->_done = false;
 }
 
 Schedule::Schedule(string schedule) {
@@ -22,7 +23,7 @@ Schedule::Schedule(string schedule) {
 		str = schedule.substr(0, startND - 1);
 		this->_done = 0;
 	}
-	this->_name = schedule;
+	this->_name = str;
 }
 
 Schedule::~Schedule() {

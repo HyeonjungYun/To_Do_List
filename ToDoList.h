@@ -17,10 +17,13 @@ public:
 	~ToDoList();
 	void view();
 	void create();
-	void addSchedule(string schedule);
+	void addSchedule();
 	void doneSchedule();
 	void removeSchedule();
 	void setPriority();
+	void selectUpAndDown(int index);
+	void upPriority(int index);
+	void downPriority(int index);
 	void read();
 	void save();
 };

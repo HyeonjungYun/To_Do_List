@@ -110,7 +110,7 @@ void ToDoList::doneSchedule() {
 void ToDoList::removeSchedule() {
 	read();
 	view();
-	cout << "제거할 일정을 고르세요.(0 입력시 종료)" << endl;
+	cout << "제거할 일정을 고르세요.(0 입력시 종료)." << endl;
 
 	while (1) {
 		int index;
@@ -126,4 +126,78 @@ void ToDoList::removeSchedule() {
 		}
 		view();
 	}
+}
+
+void ToDoList::setPriority() {
+	read();
+	view();
+
+	cout << "우선순위를 변경할 일정을 고르세요(0 입력 시 종료)." << endl;
+
+	while (1) {
+		int index;
+		cin >> index;
+		if (!cin) {
+			cout << "정수로 입력해주세요." << endl;
+			continue;
+		}
+		else if (index > scheduleList.size())
+			cout << "해당 일정이 존재하지 않습니다." << endl;
+		else if (index == 0) break;
+		else {
+			selectUpAndDown(index);
+			save();
+		}
+		view();
+	}
+}
+
+void ToDoList::selectUpAndDown(int index) {
+	cout << "우선순위\n1.높이기\n2.낮추기" << endl;
+	int upAndDown;
+	cin >> upAndDown;
+
+	if (!cin) {
+		cout << "정수로 입력해주세요." << endl;
+		return;
+	}
+	else if (upAndDown == 1)
+		upPriority(index);
+	else if (upAndDown == 2)
+		downPriority(index);
+
+}
+
+void ToDoList::upPriority(int index) {
+	if (index > scheduleList.size()) {
+		cout << "입력이 잘못 되었습니다." << endl;
+		return;
+	}
+	else if (index == 1) {
+		cout << "우선순위가 가장 높은 일정은 더 이상 우선순위를 높일 수 없습니다." << endl;
+	}
+
+	string task;
+
+	task = scheduleList.at(index-1).getSchedule();
+	Schedule schedule(task);
+	scheduleList.erase(scheduleList.begin() + index - 1);
+	scheduleList.insert(scheduleList.begin() + index - 2, schedule);
+}
+
+void ToDoList::downPriority(int index) {
+	if (index > scheduleList.size()) {
+		cout << "입력이 잘못 되었습니다." << endl;
+		return;
+	}
+	else if (index == scheduleList.size()) {
+		cout << "우선순위가 가장 낮은 일정은 더 이상 우선순위를 낮출 수 없습니다." << endl;
+	}
+
+	string task;
+
+	task = scheduleList.at(index - 1).getSchedule();
+	Schedule schedule(task);
+	scheduleList.erase(scheduleList.begin() + index - 1);
+	scheduleList.insert(scheduleList.begin() + index , schedule);
 }

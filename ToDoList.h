@@ -26,6 +26,7 @@ public:
 	void downPriority(int index);
 	void read();
 	void save();
+	bool scheduleListIsEmpty();
 };
 
 #endif _TO_DO_LIST_

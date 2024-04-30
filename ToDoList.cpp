@@ -153,7 +153,7 @@ void ToDoList::setPriority() {
 }
 
 void ToDoList::selectUpAndDown(int index) {
-	cout << "우선순위\n1.높이기\n2.낮추기" << endl;
+	cout << "우선순위\n1.높이기\n2.낮추기\n0.종료" << endl;
 	int upAndDown;
 	cin >> upAndDown;
 
@@ -162,10 +162,9 @@ void ToDoList::selectUpAndDown(int index) {
 		return;
 	}
 	else if (upAndDown == 1)
-		upPriority(index);
+		upPriority(index);		
 	else if (upAndDown == 2)
 		downPriority(index);
-
 }
 
 void ToDoList::upPriority(int index) {
@@ -183,6 +182,7 @@ void ToDoList::upPriority(int index) {
 	Schedule schedule(task);
 	scheduleList.erase(scheduleList.begin() + index - 1);
 	scheduleList.insert(scheduleList.begin() + index - 2, schedule);
+	view();
 }
 
 void ToDoList::downPriority(int index) {
@@ -200,4 +200,11 @@ void ToDoList::downPriority(int index) {
 	Schedule schedule(task);
 	scheduleList.erase(scheduleList.begin() + index - 1);
 	scheduleList.insert(scheduleList.begin() + index , schedule);
+	view();
+}
+
+bool ToDoList::scheduleListIsEmpty() {
+	read();
+
+	return scheduleList.empty();
 }

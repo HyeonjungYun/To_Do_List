@@ -41,3 +41,7 @@ bool Schedule::is_done() {
 void Schedule::done() {
 	this->_done = 1;
 }
+
+string Schedule::getSchedule() {
+	return _name + (_done ? " done" : " notDone");
+}

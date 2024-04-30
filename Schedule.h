@@ -14,6 +14,7 @@ public:
 	~Schedule();
 
 	string getName();
+	string getSchedule();
 	bool is_done();
 	void done();
 };
